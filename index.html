@@ -411,7 +411,7 @@
         <div class="container">
             <h1>PDF Editing Made Simple</h1>
             <p>Fast, secure, and intuitive tools to convert, compress, merge, split, and modify PDF files - all in one place.</p>
-            <a href="#tools" class="cta-button" onclick="event.preventDefault(); document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });">Get Started</a>
+            <a href="#tools" class="cta-button" onclick="event.preventDefault(); document.getElementById('tools').scrollIntoView({ behavior: 'smooth' }); switchTab('convert');">Get Started</a>
         </div>
     </section>
 
@@ -419,7 +419,7 @@
         <div class="container">
             <h2 class="section-title">What Can You Do?</h2>
             <div class="feature-grid">
-                <div class="feature-card" data-tab="convert" onclick="switchToTab('convert')">
+                <div class="feature-card" data-tab="convert" onclick="switchTab('convert')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="17 1 21 5 17 9"></polyline>
@@ -431,7 +431,7 @@
                     <h3 class="feature-title">Convert PDF</h3>
                     <p>Convert PDFs to Word, Excel, PowerPoint, or image formats. Or convert other formats to PDF.</p>
                 </div>
-                <div class="feature-card" data-tab="compress" onclick="switchToTab('compress')">
+                <div class="feature-card" data-tab="compress" onclick="switchTab('compress')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -442,7 +442,7 @@
                     <h3 class="feature-title">Compress PDF</h3>
                     <p>Reduce the file size of your PDFs without sacrificing quality for easier sharing and storage.</p>
                 </div>
-                <div class="feature-card" data-tab="merge" onclick="switchToTab('merge')">
+                <div class="feature-card" data-tab="merge" onclick="switchTab('merge')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -452,7 +452,7 @@
                     <h3 class="feature-title">Split & Merge</h3>
                     <p>Split large PDFs into smaller documents or combine multiple PDFs into a single file.</p>
                 </div>
-                <div class="feature-card" data-tab="edit" onclick="switchToTab('edit')">
+                <div class="feature-card" data-tab="edit" onclick="switchTab('edit')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -462,7 +462,7 @@
                     <h3 class="feature-title">Edit PDF</h3>
                     <p>Edit text, add annotations, insert images, and add or delete pages from your PDF documents.</p>
                 </div>
-                <div class="feature-card" data-tab="rotate" onclick="switchToTab('rotate')">
+                <div class="feature-card" data-tab="rotate" onclick="switchTab('rotate')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -472,7 +472,7 @@
                     <h3 class="feature-title">Rotate & Reorder</h3>
                     <p>Rotate pages to the correct orientation or reorder pages in your PDF document.</p>
                 </div>
-                <div class="feature-card" data-tab="protect" onclick="switchToTab('protect')">
+                <div class="feature-card" data-tab="protect" onclick="switchTab('protect')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
