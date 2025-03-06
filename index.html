@@ -146,7 +146,6 @@
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px var(--shadow);
-            cursor: pointer;
             background-color: #f8fbff;
         }
         
@@ -276,36 +275,6 @@
             background-color: var(--secondary);
         }
         
-        .faq-section {
-            padding: 60px 0;
-            background-color: white;
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-        
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .faq-answer.active {
-            display: block;
-        }
-        
         footer {
             background-color: var(--primary);
             color: white;
@@ -398,9 +367,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#features" onclick="event.preventDefault(); document.getElementById('features').scrollIntoView({ behavior: 'smooth' });">Features</a></li>
-                    <li><a href="#tools" onclick="event.preventDefault(); document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });">Tools</a></li>
-                    <li><a href="#faq" onclick="event.preventDefault(); document.getElementById('faq').scrollIntoView({ behavior: 'smooth' });">FAQ</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tools">Tools</a></li>
                     <li><a href="https://buymeacoffee.com/fezi" target="_blank" class="cta-button">Buy me a Coffee</a></li>
                 </ul>
             </nav>
@@ -411,7 +379,7 @@
         <div class="container">
             <h1>PDF Editing Made Simple</h1>
             <p>Fast, secure, and intuitive tools to convert, compress, merge, split, and modify PDF files - all in one place.</p>
-            <a href="#tools" class="cta-button" onclick="event.preventDefault(); document.getElementById('tools').scrollIntoView({ behavior: 'smooth' }); switchTab('convert');">Get Started</a>
+            <a href="#tools" class="cta-button">Get Started</a>
         </div>
     </section>
 
@@ -419,7 +387,7 @@
         <div class="container">
             <h2 class="section-title">What Can You Do?</h2>
             <div class="feature-grid">
-                <div class="feature-card" data-tab="convert" onclick="switchTab('convert')">
+                <div class="feature-card" onclick="showTab('convert')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="17 1 21 5 17 9"></polyline>
@@ -431,7 +399,7 @@
                     <h3 class="feature-title">Convert PDF</h3>
                     <p>Convert PDFs to Word, Excel, PowerPoint, or image formats. Or convert other formats to PDF.</p>
                 </div>
-                <div class="feature-card" data-tab="compress" onclick="switchTab('compress')">
+                <div class="feature-card" onclick="showTab('compress')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -442,7 +410,7 @@
                     <h3 class="feature-title">Compress PDF</h3>
                     <p>Reduce the file size of your PDFs without sacrificing quality for easier sharing and storage.</p>
                 </div>
-                <div class="feature-card" data-tab="merge" onclick="switchTab('merge')">
+                <div class="feature-card" onclick="showTab('merge')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -452,7 +420,7 @@
                     <h3 class="feature-title">Split & Merge</h3>
                     <p>Split large PDFs into smaller documents or combine multiple PDFs into a single file.</p>
                 </div>
-                <div class="feature-card" data-tab="edit" onclick="switchTab('edit')">
+                <div class="feature-card" onclick="showTab('edit')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -462,7 +430,7 @@
                     <h3 class="feature-title">Edit PDF</h3>
                     <p>Edit text, add annotations, insert images, and add or delete pages from your PDF documents.</p>
                 </div>
-                <div class="feature-card" data-tab="rotate" onclick="switchTab('rotate')">
+                <div class="feature-card" onclick="showTab('rotate')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -472,7 +440,7 @@
                     <h3 class="feature-title">Rotate & Reorder</h3>
                     <p>Rotate pages to the correct orientation or reorder pages in your PDF document.</p>
                 </div>
-                <div class="feature-card" data-tab="protect" onclick="switchTab('protect')">
+                <div class="feature-card" onclick="showTab('protect')">
                     <div class="feature-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -491,13 +459,13 @@
             <h2 class="section-title">PDF Tools</h2>
             <div class="tool-container">
                 <div class="tool-tabs">
-                    <button class="tab-button active" data-tab="convert">Convert</button>
-                    <button class="tab-button" data-tab="compress">Compress</button>
-                    <button class="tab-button" data-tab="merge">Merge</button>
-                    <button class="tab-button" data-tab="split">Split</button>
-                    <button class="tab-button" data-tab="edit">Edit</button>
-                    <button class="tab-button" data-tab="rotate">Rotate</button>
-                    <button class="tab-button" data-tab="protect">Protect</button>
+                    <button class="tab-button active" onclick="showTab('convert')">Convert</button>
+                    <button class="tab-button" onclick="showTab('compress')">Compress</button>
+                    <button class="tab-button" onclick="showTab('merge')">Merge</button>
+                    <button class="tab-button" onclick="showTab('split')">Split</button>
+                    <button class="tab-button" onclick="showTab('edit')">Edit</button>
+                    <button class="tab-button" onclick="showTab('rotate')">Rotate</button>
+                    <button class="tab-button" onclick="showTab('protect')">Protect</button>
                 </div>
                 
                 <div class="tool-content">
@@ -540,7 +508,6 @@
                     </div>
                     
                     <div class="tab-pane" id="compress">
-                        <!-- Similar structure for compress tab -->
                         <div class="file-upload" id="compress-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -567,7 +534,6 @@
                     </div>
                     
                     <div class="tab-pane" id="merge">
-                        <!-- Merge tab content -->
                         <div class="file-upload" id="merge-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -589,7 +555,6 @@
                     </div>
                     
                     <div class="tab-pane" id="split">
-                        <!-- Split tab content -->
                         <div class="file-upload" id="split-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -620,9 +585,7 @@
                         <button class="process-button">Split PDF</button>
                     </div>
                     
-                    <!-- Other tab panes -->
                     <div class="tab-pane" id="edit">
-                        <!-- Edit tab content -->
                         <div class="file-upload" id="edit-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -642,7 +605,6 @@
                     </div>
                     
                     <div class="tab-pane" id="rotate">
-                        <!-- Rotate tab content -->
                         <div class="file-upload" id="rotate-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -666,7 +628,7 @@
                             
                             <div class="option-group">
                                 <label class="option-label">Apply to:</label>
-                                <select class="option-input">
+                                <select class="option-input" id="rotate-apply">
                                     <option value="all">All Pages</option>
                                     <option value="odd">Odd Pages</option>
                                     <option value="even">Even Pages</option>
@@ -684,7 +646,6 @@
                     </div>
                     
                     <div class="tab-pane" id="protect">
-                        <!-- Protect tab content -->
                         <div class="file-upload" id="protect-upload">
                             <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -704,4 +665,126 @@
                             
                             <div class="option-group">
                                 <label class="option-label">Confirm Password:</label>
-                                <input type="password" class="option-input" placeholder="
+                                <input type="password" class="option-input" placeholder="Confirm password">
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="option-label">Permissions:</label>
+                                <select class="option-input">
+                                    <option value="all">Allow All</option>
+                                    <option value="read">Read Only</option>
+                                    <option value="edit">Edit Only</option>
+                                    <option value="print">Print Only</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Protect PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                EasyPDF
+            </div>
+            
+            <div class="social-links">
+                <a href="https://buymeacoffee.com/fezi" target="_blank" class="sponsor-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                    Buy me a coffee
+                </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 EasyPDF. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple function to show tabs
+        function showTab(tabId) {
+            // Hide all tabs
+            var tabPanes = document.querySelectorAll('.tab-pane');
+            for (var i = 0; i < tabPanes.length; i++) {
+                tabPanes[i].style.display = 'none';
+            }
+            
+            // Remove active class from all buttons
+            var tabButtons = document.querySelectorAll('.tab-button');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // Add active class to the clicked button
+            var buttons = document.querySelectorAll('.tab-button');
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].innerText.toLowerCase() === tabId.toLowerCase()) {
+                    buttons[i].classList.add('active');
+                }
+            }
+            
+            // Scroll to tools section
+            document.getElementById('tools').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        // File upload handling
+        document.addEventListener('DOMContentLoaded', function() {
+            var fileUploads = document.querySelectorAll('.file-upload');
+            for (var i = 0; i < fileUploads.length; i++) {
+                fileUploads[i].addEventListener('click', function() {
+                    var fileInput = this.querySelector('input[type="file"]');
+                    if (fileInput) {
+                        fileInput.click();
+                    }
+                });
+            }
+            
+            // Handle custom pages toggle in rotate tab
+            var rotateApply = document.getElementById('rotate-apply');
+            var customPages = document.getElementById('custom-pages');
+            if (rotateApply && customPages) {
+                rotateApply.addEventListener('change', function() {
+                    if (this.value === 'custom') {
+                        customPages.style.display = 'block';
+                    } else {
+                        customPages.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Alert on process button
+            var processButtons = document.querySelectorAll('.process-button');
+            for (var i = 0; i < processButtons.length; i++) {
+                processButtons[i].addEventListener('click', function() {
+                    alert('This is a demo. In a real application, this would process your file.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
