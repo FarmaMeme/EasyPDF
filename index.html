@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyPDF - Your All-in-One PDF Tool</title>
+    <style>
+        :root {
+            --primary: #4dabf7;
+            --secondary: #74c0fc;
+            --accent: #c5e3ff;
+            --background: #f0f8ff;
+            --text: #333;
+            --card-bg: #ffffff;
+            --shadow: rgba(77, 171, 247, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #2196f3);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo svg {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            filter: drop-shadow(0 2px 3px rgba(77, 171, 247, 0.3));
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .tool-section {
+            padding: 60px 0;
+            background-color: var(--background);
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .tool-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tool-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text);
+            opacity: 0.7;
+            white-space: nowrap;
+        }
+        
+        .tab-button.active {
+            color: var(--primary);
+            opacity: 1;
+            font-weight: bold;
+            box-shadow: 0 2px 0 var(--primary);
+        }
+        
+        .tool-content {
+            padding: 20px 0;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .file-upload {
+            border: 2px dashed var(--secondary);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background-color: var(--background);
+        }
+        
+        .file-upload p {
+            margin-top: 10px;
+        }
+        
+        .options-container {
+            margin: 20px 0;
+        }
+        
+        .option-group {
+            margin-bottom: 15px;
+        }
+        
+        .option-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .option-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .process-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .process-button:hover {
+            background-color: var(--secondary);
+        }
+        
+        .faq-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+        }
+        
+        .sponsor-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FFDD00;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .sponsor-button svg {
+            margin-right: 10px;
+        }
+        
+        .sponsor-button:hover {
+            background-color: #FFE44D;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                EasyPDF
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="https://buymeacoffee.com/fezi" target="_blank" class="cta-button">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>PDF Editing Made Simple</h1>
+            <p>Fast, secure, and intuitive tools to convert, compress, merge, split, and modify PDF files - all in one place.</p>
+            <a href="#tools" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">What Can You Do?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Convert PDF</h3>
+                    <p>Convert PDFs to Word, Excel, PowerPoint, or image formats. Or convert other formats to PDF.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Compress PDF</h3>
+                    <p>Reduce the file size of your PDFs without sacrificing quality for easier sharing and storage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="12" y1="3" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Split & Merge</h3>
+                    <p>Split large PDFs into smaller documents or combine multiple PDFs into a single file.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Edit PDF</h3>
+                    <p>Edit text, add annotations, insert images, and add or delete pages from your PDF documents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Rotate & Reorder</h3>
+                    <p>Rotate pages to the correct orientation or reorder pages in your PDF document.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Protect PDF</h3>
+                    <p>Add password protection, encryption, and permission controls to your sensitive PDF documents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section" id="tools">
+        <div class="container">
+            <h2 class="section-title">PDF Tools</h2>
+            <div class="tool-container">
+                <div class="tool-tabs">
+                    <button class="tab-button active" data-tab="convert">Convert</button>
+                    <button class="tab-button" data-tab="compress">Compress</button>
+                    <button class="tab-button" data-tab="merge">Merge</button>
+                    <button class="tab-button" data-tab="split">Split</button>
+                    <button class="tab-button" data-tab="edit">Edit</button>
+                    <button class="tab-button" data-tab="rotate">Rotate</button>
+                    <button class="tab-button" data-tab="protect">Protect</button>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="tab-pane active" id="convert">
+                        <div class="file-upload" id="convert-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your file here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="convert-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <label class="option-label">Convert to:</label>
+                                <select class="option-input">
+                                    <option value="docx">Word (.docx)</option>
+                                    <option value="xlsx">Excel (.xlsx)</option>
+                                    <option value="pptx">PowerPoint (.pptx)</option>
+                                    <option value="jpg">JPG Image</option>
+                                    <option value="png">PNG Image</option>
+                                    <option value="txt">Text (.txt)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="option-label">Quality:</label>
+                                <select class="option-input">
+                                    <option value="high">High</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Convert PDF</button>
+                    </div>
+                    
+                    <div class="tab-pane" id="compress">
+                        <!-- Similar structure for compress tab -->
+                        <div class="file-upload" id="compress-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your PDF here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="compress-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <label class="option-label">Compression Level:</label>
+                                <select class="option-input">
+                                    <option value="high">High Compression (smaller file)</option>
+                                    <option value="medium" selected>Medium Compression (balanced)</option>
+                                    <option value="low">Low Compression (better quality)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Compress PDF</button>
+                    </div>
+                    
+                    <div class="tab-pane" id="merge">
+                        <!-- Merge tab content -->
+                        <div class="file-upload" id="merge-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop multiple PDFs here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="merge-file" multiple style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div id="merge-file-list" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px; min-height: 100px;">
+                                <p style="text-align: center; color: #888;">Your files will appear here</p>
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Merge PDFs</button>
+                    </div>
+                    
+                    <div class="tab-pane" id="split">
+                        <!-- Split tab content -->
+                        <div class="file-upload" id="split-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your PDF here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="split-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <label class="option-label">Split Method:</label>
+                                <select class="option-input" id="split-method">
+                                    <option value="range">Page Range</option>
+                                    <option value="each">Extract Each Page</option>
+                                    <option value="size">Split by Size</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group" id="range-option">
+                                <label class="option-label">Page Range (e.g., 1-3,5,7-9):</label>
+                                <input type="text" class="option-input" placeholder="Enter page ranges">
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Split PDF</button>
+                    </div>
+                    
+                    <!-- Other tab panes -->
+                    <div class="tab-pane" id="edit">
+                        <!-- Edit tab content -->
+                        <div class="file-upload" id="edit-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your PDF here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="edit-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <p style="text-align: center; margin-top: 20px;">File will open in editor after upload</p>
+                        </div>
+                        
+                        <button class="process-button">Open Editor</button>
+                    </div>
+                    
+                    <div class="tab-pane" id="rotate">
+                        <!-- Rotate tab content -->
+                        <div class="file-upload" id="rotate-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your PDF here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="rotate-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <label class="option-label">Rotation:</label>
+                                <select class="option-input">
+                                    <option value="90">90° Clockwise</option>
+                                    <option value="180">180°</option>
+                                    <option value="270">90° Counterclockwise</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="option-label">Apply to:</label>
+                                <select class="option-input">
+                                    <option value="all">All Pages</option>
+                                    <option value="odd">Odd Pages</option>
+                                    <option value="even">Even Pages</option>
+                                    <option value="custom">Custom Pages</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group" id="custom-pages" style="display: none;">
+                                <label class="option-label">Custom Pages (e.g., 1,3,5-7):</label>
+                                <input type="text" class="option-input" placeholder="Enter page numbers">
+                            </div>
+                        </div>
+                        
+                        <button class="process-button">Rotate PDF</button>
+                    </div>
+                    
+                    <div class="tab-pane" id="protect">
+                        <!-- Protect tab content -->
+                        <div class="file-upload" id="protect-upload">
+                            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <h3>Drag & Drop your PDF here</h3>
+                            <p>or click to browse your files</p>
+                            <input type="file" id="protect-file" style="display: none;">
+                        </div>
+                        
+                        <div class="options-container">
+                            <div class="option-group">
+                                <label class="option-label">Password:</label>
+                                <input type="password" class="option-input" placeholder="Enter password">
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="option-label">Confirm Password:</label>
+                                <input type="password" class="option-input" placeholder="
